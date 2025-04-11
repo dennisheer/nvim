@@ -27,14 +27,13 @@ return {
       },
     }
 
-    -- Key mappings
-    vim.keymap.set("n", "<leader>jk", function()
+    vim.keymap.set("n", "<leader>ji", function()
       telescope.extensions.file_browser.file_browser({
         path = vim.fn.expand("%:p:h"),
         select_buffer = true,
       })
-    end, { desc = "Telescope File Browser (lokaler Pfad)" })
-    vim.keymap.set('n', '<leader>jf', builtin.find_files, { desc = 'Telescope find files' })
+    end, { desc = "Telescope File Browser (local path)" })
+    vim.keymap.set('n', '<leader>jk', builtin.find_files, { desc = 'Telescope find files' })
     vim.keymap.set('n', '<C-p>', builtin.git_files, {})
     vim.keymap.set('n', '<leader>jg', builtin.live_grep, { desc = 'Telescope live grep' })
     vim.keymap.set('n', '<leader>ps', function()
