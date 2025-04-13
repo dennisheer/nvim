@@ -1,20 +1,29 @@
 return {
   "nvim-treesitter/nvim-treesitter",
+
   build = ":TSUpdate",
+
   config = function()
     require 'nvim-treesitter.configs'.setup {
-      -- A list of parser names, or "all" (the listed parsers MUST always be installed)
+      sync_install = false,
+      auto_install = true,
+
       ensure_installed = {
-        "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline",
-        "html", "scss", "javascript", "typescript", "yaml"
+        "lua",
+        "vim",
+        "vimdoc",
+        "markdown",
+        "markdown_inline",
+        "html",
+        "scss",
+        "javascript",
+        "typescript",
+        "yaml"
       },
 
-      -- Install parsers synchronously (only applied to `ensure_installed`)
-      sync_install = false,
-
-      -- Automatically install missing parsers when entering buffer
-      -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-      auto_install = true,
+      indent = {
+        enable = true
+      },
 
       highlight = {
         enable = true,
@@ -25,8 +34,6 @@ return {
         -- Instead of true, it can also be a list of languages.
         additional_vim_regex_highlighting = false,
       },
-
-      indent = { enable = true },
     }
   end
 }

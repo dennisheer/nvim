@@ -67,7 +67,9 @@ return {
             vim.snippet.expand(args.body)
           end,
         },
-        mapping = cmp.mapping.preset.insert({}),
+        mapping = cmp.mapping.preset.insert({
+          ['<CR>'] = cmp.mapping.confirm({ select = true })
+        }),
       })
     end
   },
@@ -76,6 +78,4 @@ return {
   {
     "hrsh7th/cmp-nvim-lsp", -- Required for `cmp` and `lsp`
   },
-
-  -- Add more plugins as needed...
 }
