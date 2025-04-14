@@ -1,6 +1,7 @@
 return {
   {
     "williamboman/mason.nvim",
+
     config = function()
       require('mason').setup({})
     end
@@ -8,12 +9,35 @@ return {
 
   {
     "williamboman/mason-lspconfig.nvim",
+
     config = function()
       require('mason-lspconfig').setup({
-        ensure_installed = { 'bashls', 'yamlls', 'ts_ls', 'cssls', 'lua_ls' },
+        ensure_installed = { 'angularls', 'bashls', 'yamlls', 'ts_ls', 'cssls', 'lua_ls', 'terraformls' },
         handlers = {
           function(server_name)
             require('lspconfig')[server_name].setup({})
+          end,
+
+          ["lua_ls"] = function()
+            require("lspconfig").lua_ls.setup({
+              settings = {
+                Lua = {
+                  runtime = {
+                    version = "LuaJIT",
+                  },
+                  diagnostics = {
+                    globals = { "vim" },
+                  },
+                  workspace = {
+                    library = vim.api.nvim_get_runtime_file("", true),
+                    checkThirdParty = false,
+                  },
+                  telemetry = {
+                    enable = false,
+                  },
+                },
+              },
+            })
           end,
         },
       })
@@ -22,6 +46,7 @@ return {
 
   {
     "neovim/nvim-lspconfig",
+
     config = function()
       -- This sets up the LSP capabilities to use `nvim-cmp` as a source for completion
       local lspconfig_defaults = require('lspconfig').util.default_config
@@ -31,7 +56,6 @@ return {
         require('cmp_nvim_lsp').default_capabilities()
       )
 
-      -- Autocmd for LSP-specific actions
       vim.api.nvim_create_autocmd('LspAttach', {
         desc = 'LSP actions',
         callback = function(event)
@@ -52,9 +76,9 @@ return {
     end
   },
 
-  -- nvim-cmp plugin (for completion)
   {
     "hrsh7th/nvim-cmp",
+
     config = function()
       local cmp = require('cmp')
 
@@ -74,7 +98,6 @@ return {
     end
   },
 
-  -- Additional dependencies
   {
     "hrsh7th/cmp-nvim-lsp", -- Required for `cmp` and `lsp`
   },
