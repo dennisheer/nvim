@@ -18,7 +18,8 @@ return {
         "scss",
         "javascript",
         "typescript",
-        "yaml"
+        "yaml",
+        "terraform",
       },
 
       indent = {
