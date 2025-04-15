@@ -2,6 +2,8 @@ return {
   {
     "williamboman/mason.nvim",
 
+    event = "BufReadPost",
+
     config = function()
       require('mason').setup({})
     end
@@ -9,6 +11,8 @@ return {
 
   {
     "williamboman/mason-lspconfig.nvim",
+
+    event = "BufReadPost",
 
     config = function()
       require('mason-lspconfig').setup({
@@ -47,6 +51,8 @@ return {
   {
     "neovim/nvim-lspconfig",
 
+    event = "BufReadPost",
+
     config = function()
       -- This sets up the LSP capabilities to use `nvim-cmp` as a source for completion
       local lspconfig_defaults = require('lspconfig').util.default_config
@@ -79,6 +85,8 @@ return {
   {
     "hrsh7th/nvim-cmp",
 
+    event = "BufReadPost",
+
     config = function()
       local cmp = require('cmp')
 
@@ -100,5 +108,7 @@ return {
 
   {
     "hrsh7th/cmp-nvim-lsp", -- Required for `cmp` and `lsp`
+
+    event = "BufReadPost",
   },
 }
