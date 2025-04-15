@@ -6,12 +6,12 @@ vim.o.tabstop = 2
 vim.o.shiftwidth = 2
 vim.o.expandtab = true
 vim.o.smartindent = true
---vim.o.clipboard = 'unnamedplus' -- Use system clipboard
+--vim.o.clipboard = "unnamedplus" -- Use system clipboard
 
 -- UI Settings
 vim.o.termguicolors = true
 vim.o.cursorline = true
-vim.o.signcolumn = 'yes'
+vim.o.signcolumn = "yes"
 
 -- Search settings
 --vim.o.ignorecase = true         -- Ignore case in search

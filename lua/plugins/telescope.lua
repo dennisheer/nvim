@@ -1,18 +1,18 @@
 return {
-  'nvim-telescope/telescope.nvim',
+  "nvim-telescope/telescope.nvim",
 
   dependencies = {
-    'nvim-lua/plenary.nvim',
-    'nvim-telescope/telescope-file-browser.nvim',
+    "nvim-lua/plenary.nvim",
+    "nvim-telescope/telescope-file-browser.nvim",
     {
-      'nvim-telescope/telescope-fzf-native.nvim',
+      "nvim-telescope/telescope-fzf-native.nvim",
       build = "make"
     },
   },
 
   config = function()
-    local telescope = require('telescope')
-    local builtin = require('telescope.builtin')
+    local telescope = require("telescope")
+    local builtin = require("telescope.builtin")
 
     telescope.setup {
       extensions = {
@@ -30,14 +30,14 @@ return {
       })
     end, { desc = "Telescope File Browser (local path)" })
 
-    vim.keymap.set('n', '<leader>jk', builtin.find_files, { desc = 'Telescope find files' })
-    vim.keymap.set('n', '<leader>jg', builtin.live_grep, { desc = 'Telescope live grep' })
+    vim.keymap.set("n", "<leader>jk", builtin.find_files, { desc = "Telescope find files" })
+    vim.keymap.set("n", "<leader>jg", builtin.live_grep, { desc = "Telescope live grep" })
 
-    vim.keymap.set('n', '<leader>ps', function()
+    vim.keymap.set("n", "<leader>ps", function()
       builtin.grep_string({ search = vim.fn.input("Grep > ") })
     end)
 
-    vim.keymap.set('n', '<leader>jg', builtin.quickfix)
+    vim.keymap.set("n", "<leader>jg", builtin.quickfix)
 
     vim.api.nvim_create_autocmd("VimEnter", {
       callback = function()
@@ -47,7 +47,7 @@ return {
       end,
     })
 
-    telescope.load_extension('fzf')
-    telescope.load_extension('file_browser')
+    telescope.load_extension("fzf")
+    telescope.load_extension("file_browser")
   end
 }
