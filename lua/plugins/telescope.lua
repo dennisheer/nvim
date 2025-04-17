@@ -10,6 +10,8 @@ return {
     },
   },
 
+  branch = "0.1.x",
+
   config = function()
     local telescope = require("telescope")
     local builtin = require("telescope.builtin")
